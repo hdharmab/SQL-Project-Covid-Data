@@ -188,7 +188,8 @@ From #PercentPopulationVaccinated
 Where location = 'United States'
 Order By 2,3 DESC
 
---CREATE VIEW PeopleVaccinatedUnitedStates as 
+-- create View
+CREATE VIEW PeopleVaccinatedUnitedStates as 
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , sum(convert(int, vac.new_vaccinations)) over (partition by dea.location order by dea.location, dea.date) as RollingPeopleVaccinated
 FROM SQLPortfolioProject..CovidDeaths dea
